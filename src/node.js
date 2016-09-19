@@ -1,2 +1,2 @@
+var window = window || void 0;
 if(!window && module && module.exports) { module.exports = $_; }
-else if (window) { window.$_ = new $_(); }

@@ -6,14 +6,14 @@ var $_ = (function($_) {
      * @param {object} obj - Obj to clone.
      * @return {object} - Cloned object.
      */
-    $_.prototype.clone = function(obj) {
-        if(obj == null || !this.isObject(obj)) {
+    $_.clone = function(obj) {
+        if(obj == null || !$_.isObject(obj)) {
             return obj;
         }
 
         var result = obj.constructor();
         for(key in obj) {
-            result[key] = this.clone(obj[key]);
+            result[key] = $_.clone(obj[key]);
         }
         return result;
     };

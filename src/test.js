@@ -7,7 +7,7 @@ var $_ = (function($_) {
      * @param {any} expected - Expected value.
      * @param {any} actual - Actual value.
      */
-    $_.prototype.assert = function(name, expected, actual) {
+    $_.assert = function(name, expected, actual) {
         if(expected !== actual) {
             console.error('FAIL: ' + name);
         } else {
@@ -17,4 +17,4 @@ var $_ = (function($_) {
 
     return $_
 ;
-})($_ || function(){});
+})($_ || {});

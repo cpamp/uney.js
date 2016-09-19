@@ -8,7 +8,7 @@ var $_ = (function($_) {
      * @param {number} upper - Upper bound.
      * @return {number} - The number or the lower or upper bound.
      */
-    $_.prototype.restrict = function(num, lower, upper) {
+    $_.restrict = function(num, lower, upper) {
         return (
             num >= upper ? upper :
             num <= lower ? lower : num
@@ -22,7 +22,7 @@ var $_ = (function($_) {
      * @param {number} upper - Upper bound.
      * @return {boolean} - Whether or not the number is between the range.
      */
-    $_.prototype.inRange = function(num, lower, upper) {
+    $_.inRange = function(num, lower, upper) {
         return num >= lower && num <= upper;
     };
 

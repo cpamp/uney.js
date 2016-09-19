@@ -8,7 +8,7 @@ var $_ = (function($_) {
      * @param {string? | string[]?} - Keys to compare. Defaults direct comparison.
      * @return {boolean} - Whether the values are equal or not.
      */
-    $_.prototype.equals = function(value, compare, keys) {
+    $_.equals = function(value, compare, keys) {
         var self = this;
         var result = true;
         if(keys == null) { return value === compare; }

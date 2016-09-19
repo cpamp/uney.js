@@ -101,7 +101,7 @@ var $_ = (function($_) {
         }, self);
     };
 
-    $_.prototype.promise = function(callback) {
+    $_.promise = function(callback) {
         var p = new $promise(callback);
         return {
             then: function(resolve, reject) {
@@ -114,4 +114,4 @@ var $_ = (function($_) {
     };
 
     return $_;
-})($_ || function(){});
+})($_ || {});

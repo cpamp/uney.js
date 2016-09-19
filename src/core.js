@@ -6,7 +6,7 @@ var $_ = (function($_) {
      * @param {any} value - Value to check.
      * @return {boolean} - Whether or not value is not undefined.
      */
-    $_.prototype.isDefined = function(value) {
+    $_.isDefined = function(value) {
         return value !== void 0;
     };
 
@@ -15,7 +15,7 @@ var $_ = (function($_) {
      * @param {any} value - Value to check.
      * @return {boolean} - Whether or not value is null.
      */
-    $_.prototype.isNull = function(value) {
+    $_.isNull = function(value) {
         return value === null;
     };
 
@@ -24,7 +24,7 @@ var $_ = (function($_) {
      * @param {any} value - Value to check.
      * @return {boolean} - Whether or not value is an object.
      */
-    $_.prototype.isObject = function(value) {
+    $_.isObject = function(value) {
         return typeof value === 'object';
     };
 
@@ -33,7 +33,7 @@ var $_ = (function($_) {
      * @param {any} value - Value to check.
      * @return {boolean} - Whether or not value is an array.
      */
-    $_.prototype.isArray = function(arr) {
+    $_.isArray = function(arr) {
         return Array.isArray(arr);
     };
 
@@ -42,11 +42,11 @@ var $_ = (function($_) {
      * @param {any} value - Value to check.
      * @return {boolean} - Whether or not value is a string.
      */
-    $_.prototype.isString = function(value) {
+    $_.isString = function(value) {
         return typeof value === 'string' || value instanceof String;
     };
 
-    $_.prototype.jsonTryParse = function(value) {
+    $_.jsonTryParse = function(value) {
         if(this.isString(value)) {
             try {
                 var r = JSON.parse(value);
@@ -65,7 +65,7 @@ var $_ = (function($_) {
      * @param {any} value - Default value.
      * @return {any} - param or value.
      */
-    $_.prototype.optional = function(param, value) {
+    $_.optional = function(param, value) {
         if(!this.isDefined(param)) param = value;
         return param;
     };
@@ -77,7 +77,7 @@ var $_ = (function($_) {
      * @param {number?} start - Starting index. Default: 0
      * @param {number?} increment - Increment value. Default: 1
      */
-    $_.prototype.for = function(arr, callback, start, increment) {
+    $_.for = function(arr, callback, start, increment) {
         if(start === null || isNaN(start)) { start = 0; }
         if(increment === null || isNaN(increment)) { increment = 1; }
         for(var i = 0; i < arr.length; i += increment) {
@@ -86,4 +86,4 @@ var $_ = (function($_) {
     };
 
     return $_;
-})($_ || function(){});
+})($_ || {});

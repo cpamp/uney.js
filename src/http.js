@@ -15,11 +15,10 @@ var $_ = (function($_) {
         }
     }
 
-    $_.prototype.http = function(options) {
-        var self = this;
+    $_.http = function(options) {
         return this.promise(function(resolve, reject) {
             if(!options) return;
-            if(options.method && self.isString(options.method)) {
+            if(options.method && $_.isString(options.method)) {
                 options.method = options.method.toUpperCase();
                 var err = checkVerb(options.method);
                 if(err) { reject(err); };
@@ -28,7 +27,7 @@ var $_ = (function($_) {
                 if(err) { reject(err); }
             }
 
-            if(!options.url || !self.isString(options.url)) {
+            if(!options.url || !$_.isString(options.url)) {
                 reject('Invalid http url: ' + options.url);
             }
 
@@ -37,7 +36,7 @@ var $_ = (function($_) {
             http.onreadystatechange = function() {
                 if(http.readyState === 4) {
                     var response = { status: http.status }
-                    var json = self.jsonTryParse(http.response)
+                    var json = $_.jsonTryParse(http.response)
                     if(json) {
                         response.data = json;
                     } else {
@@ -56,7 +55,7 @@ var $_ = (function($_) {
 
             http.setRequestHeader('Content-Type', 'text/plain');
 
-            if(self.isObject(options.headers)) {
+            if($_.isObject(options.headers)) {
                 for(key in options.headers) {
                     if(options.headers.hasOwnProperty(key)) {
                         http.setRequestHeader(key, options.headers[key]);
@@ -69,4 +68,4 @@ var $_ = (function($_) {
     }
 
     return $_;
-})($_ || function(){});
+})($_ || {});
