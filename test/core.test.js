@@ -1,5 +1,6 @@
-if(require !== void 0) {
-    var $_ = new(require('../dist/uney.js'))();
+var window = window || void 0;
+if(!window && require) {
+    var $_ = require('../dist/uney.js');
 }
 
 (function coreIsDefined() {

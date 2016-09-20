@@ -1,5 +1,6 @@
+var window = window || void 0;
 if(!window && require) {
-    var $_ = new(require('../dist/uney.js'));
+    var $_ = require('../dist/uney.js');
 }
 
 (function promises() {
