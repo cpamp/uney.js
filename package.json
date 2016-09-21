@@ -1,8 +1,8 @@
 {
-  "name": "tool-js",
+  "name": "uney-js",
   "version": "0.0.1",
   "description": "Javascript tools",
-  "main": "tools.js",
+  "main": "uney.js",
   "scripts": {
     "build": "gulp build",
     "test": "lite-server"
