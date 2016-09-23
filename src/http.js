@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     function errorVerb(verb) {
         return 'Invalid http verb: ' + verb;
     }
@@ -65,7 +62,4 @@ var $_ = (function($_) {
 
             http.send(options.data);
         });
-    }
-
-    return $_;
-})($_ || {});
+    };

@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     /**
      * Check if two values are equal.
      * @param {any} value - Left compare.
@@ -23,6 +20,3 @@ var $_ = (function($_) {
         });
         return result;
     };
-
-    return $_;
-})($_ || {});

@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     /**
      * Deep clone an object.
      * @param {object} obj - Obj to clone.
@@ -17,6 +14,3 @@ var $_ = (function($_) {
         }
         return result;
     };
-
-    return $_;
-})($_ || {});

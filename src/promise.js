@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     var $states = {
         pending:    0
         ,resolved:  1
@@ -112,6 +109,3 @@ var $_ = (function($_) {
             }
         };
     };
-
-    return $_;
-})($_ || {});

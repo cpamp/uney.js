@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     var days = new Array(7);
     days[0] = 'Sunday';
     days[1] = 'Monday';
@@ -159,6 +156,3 @@ var $_ = (function($_) {
         }
         return result;
     };
-
-    return $_;
-})($_ || type);

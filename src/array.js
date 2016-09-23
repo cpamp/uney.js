@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     $_.findMax = function() {
         var a = arguments;
         if(a === void 0) { return; }
@@ -75,6 +72,3 @@ var $_ = (function($_) {
         }
         return arr;
     };
-
-    return $_;
-})($_ || {});

@@ -1,4 +1,5 @@
-var $_ = (function($_) {
+var $_ = $_ || {};
+(function($_) {
     'use strict';
 
     /**
@@ -85,5 +86,9 @@ var $_ = (function($_) {
         }
     };
 
-    return $_;
-})($_ || {});
+/**INJECT**/
+
+    var window = window || void 0;
+    if(!window && module && module.exports) { module.exports = $_; }
+    else if(window) { window.$_ = $_; }
+})($_);

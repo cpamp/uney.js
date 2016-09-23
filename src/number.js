@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     /**
      * Restricts a number to specified bounds.
      * @param {number} num - Number to restrict.
@@ -25,6 +22,3 @@ var $_ = (function($_) {
     $_.inRange = function(num, lower, upper) {
         return num >= lower && num <= upper;
     };
-
-    return $_;
-})($_ || {});

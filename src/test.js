@@ -1,6 +1,3 @@
-var $_ = (function($_) {
-    'use strict';
-
     /**
      * Test equality of two values. Outputs error to console on fail.
      * @param {string} name - Name of assertion.
@@ -14,7 +11,3 @@ var $_ = (function($_) {
             console.log('PASS: ' + name);
         }
     };
-
-    return $_
-;
-})($_ || {});
