@@ -48,9 +48,9 @@ if(!window && require) {
 })();
 
 (function arrayContains() {
-    var ar = [1, 2, 3, 4, 5];
+    var ar = [1, [2, [3, 4]], 5];
 
-    var r = $_.contains(ar, 1, 2, 3, 4);
+    var r = $_.contains(ar, 1, [2, [3]], 4);
     $_.assert('array.contains(true)', true, r);
 
     var r = $_.contains(ar, 1, 5, 0);

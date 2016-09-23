@@ -78,9 +78,30 @@
         if(a === void 0) { return; }
         var ar = a[0];
         for(var i = 1; i < a.length; i++) {
-            if(ar.indexOf(a[i]) === -1) {
-                return false;
+            var found = false;
+            if($_.isArray(a[i])) {
+                for(var j = 0; j < ar.length; j++) {
+                    if($_.contains(ar, a[i][j])) {
+                        found = true;
+                        break;
+                    }
+                }
+            } else {
+                for(var j = 0; j < ar.length; j++) {
+                    if($_.isArray(ar[j])) {
+                        if($_.contains(ar[j], a[i])) {
+                            found = true;
+                            break;
+                        }
+                    } else {
+                        if(ar[j] === a[i]) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
             }
+            if(!found) return false;
         }
         return true;
     }
