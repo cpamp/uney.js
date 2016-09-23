@@ -22,3 +22,17 @@
     $_.inRange = function(num, lower, upper) {
         return num >= lower && num <= upper;
     };
+
+    /**
+     * Add numbers together
+     * @param {number} args - Args to add together
+     */
+    $_.add = function() {
+        var a = arguments;
+        if(a === void 0) { return; }
+        var r = 0;
+        for(var i = 0; i < a.length; i++) {
+            r += a[i];
+        }
+        return r;
+    }
