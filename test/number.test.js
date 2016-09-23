@@ -24,3 +24,11 @@ if(!window && require) {
     var r = $_.inRange(5, -10, 10);
     $_.assert('number.inRange(inRange)', true, r);
 })();
+
+(function numberAdd() {
+    var r = $_.add(0,0,0,0,1);
+    $_.assert('number.add(1)', 1, r);
+
+    var r = $_.add([1,[1,1]],1,1);
+    $_.assert('number.add(5)', 5, r);
+})();

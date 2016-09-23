@@ -32,7 +32,13 @@
         if(a === void 0) { return; }
         var r = 0;
         for(var i = 0; i < a.length; i++) {
-            r += a[i];
+            if($_.isArray(a[i])) {
+                for(var j = 0; j < a[i].length; j++) {
+                    r = $_.add(r, a[i][j]);
+                }
+            } else {
+                r += a[i];
+            }
         }
         return r;
-    }
+    };
