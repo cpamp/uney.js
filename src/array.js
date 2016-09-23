@@ -72,3 +72,15 @@
         }
         return arr;
     };
+
+    $_.contains = function() {
+        var a = arguments;
+        if(a === void 0) { return; }
+        var ar = a[0];
+        for(var i = 1; i < a.length; i++) {
+            if(ar.indexOf(a[i]) === -1) {
+                return false;
+            }
+        }
+        return true;
+    }

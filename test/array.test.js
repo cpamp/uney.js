@@ -46,3 +46,13 @@ if(!window && require) {
     var r = testFlat(result, arr);
     $_.assert('array.flatten(distinct)', true, r);
 })();
+
+(function arrayContains() {
+    var ar = [1, 2, 3, 4, 5];
+
+    var r = $_.contains(ar, 1, 2, 3, 4);
+    $_.assert('array.contains(true)', true, r);
+
+    var r = $_.contains(ar, 1, 5, 0);
+    $_.assert('array.contains(false)', false, r);
+})();
