@@ -148,11 +148,11 @@
         var result = format;
         var values = [];
         for(var i = 0; i < formats.length; i++) {
-            result = result.replace(new RegExp(formats[i], 'g'), '#__' + values.length + '__');
+            result = result.replace(new RegExp(formats[i], 'g'), '${' + values.length + '}');
             values.push($dateFormatter[formats[i]](date));
         }
         for(var i = 0; i < values.length; i++) {
-            result = result.replace(new RegExp('#__' + i + '__', 'g'), values[i]);
+            result = result.replace(new RegExp('\\$\\{' + i + '\\}', 'g'), values[i]);
         }
         return result;
     };
