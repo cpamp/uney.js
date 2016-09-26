@@ -23,6 +23,13 @@
         return num >= lower && num <= upper;
     };
 
+    function modify(r, val, func) {
+        for(var i = 0; i < val.length; i++) {
+            r = func(r, val[i]);
+        }
+        return r;
+    }
+
     /**
      * Add numbers together
      * @param {number} args - Args to add together
@@ -33,9 +40,7 @@
         var r = 0;
         for(var i = 0; i < a.length; i++) {
             if($_.isArray(a[i])) {
-                for(var j = 0; j < a[i].length; j++) {
-                    r = $_.add(r, a[i][j]);
-                }
+                r = modify(r, a[i], $_.add);
             } else {
                 r += a[i];
             }
@@ -66,9 +71,7 @@
         var r = init(a[0], $_.subtract);
         for(var i = 1; i < a.length; i++) {
             if($_.isArray(a[i])) {
-                for(var j = 0; j < a[i].length; j++) {
-                    r = $_.subtract(r, a[i][j]);
-                }
+                r = modify(r, a[i], $_.subtract);
             } else {
                 r -= a[i];
             }
@@ -84,19 +87,9 @@
         var a = arguments;
         if(a === void 0 || a.length < 1) { return; }
         var r = init(a[0], $_.multiply);
-        if($_.isArray(a[0])) {
-            r = a[0][0];
-            for(var i = 1; i < a[0].length; i++) {
-                if($_.isArray(a[0][i])) {
-                    r = $_.multiply(r, a[0][i]);
-                }
-            }
-        }
         for(var i = 1; i < a.length; i++) {
             if($_.isArray(a[i])) {
-                for(var j = 0; j < a[i].length; j++) {
-                    r = $_.multiply(r, a[i][j]);
-                }
+                r = modify(r, a[i], $_.multiply);
             } else {
                 r *= a[i];
             }
@@ -112,19 +105,9 @@
         var a = arguments;
         if(a === void 0 || a.length < 1) { return; }
         var r = init(a[0], $_.divide);
-        if($_.isArray(a[0])) {
-            r = a[0][0];
-            for(var i = 1; i < a[0].length; i++) {
-                if($_.isArray(a[0][i])) {
-                    r = $_.divide(r, a[0][i]);
-                }
-            }
-        }
         for(var i = 1; i < a.length; i++) {
             if($_.isArray(a[i])) {
-                for(var j = 0; j < a[i].length; j++) {
-                    r = $_.divide(r, a[i][j]);
-                }
+                r = modify(r, a[i], $_.divide);
             } else {
                 if(a[i] !== 0) {
                     r /= a[i];
