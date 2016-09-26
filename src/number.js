@@ -43,6 +43,19 @@
         return r;
     };
 
+    function init(val, func) {
+        var r = val;
+        if($_.isArray(val)) {
+            r = val[0];
+            for(var i = 1; i < val.length; i++) {
+                if($_.isArray(val[i])) {
+                    r = func(r, val[i]);
+                }
+            }
+        }
+        return r;
+    }
+
     /**
      * Subtract numbers
      * @param {number} args - Args to subtract
@@ -50,7 +63,7 @@
     $_.subtract = function() {
         var a = arguments;
         if(a === void 0 || a.length < 1) { return; }
-        var r = a[0];
+        var r = init(a[0], $_.subtract);
         for(var i = 1; i < a.length; i++) {
             if($_.isArray(a[i])) {
                 for(var j = 0; j < a[i].length; j++) {
@@ -70,7 +83,15 @@
     $_.multiply = function() {
         var a = arguments;
         if(a === void 0 || a.length < 1) { return; }
-        var r = a[0];
+        var r = init(a[0], $_.multiply);
+        if($_.isArray(a[0])) {
+            r = a[0][0];
+            for(var i = 1; i < a[0].length; i++) {
+                if($_.isArray(a[0][i])) {
+                    r = $_.multiply(r, a[0][i]);
+                }
+            }
+        }
         for(var i = 1; i < a.length; i++) {
             if($_.isArray(a[i])) {
                 for(var j = 0; j < a[i].length; j++) {
@@ -90,7 +111,15 @@
     $_.divide = function() {
         var a = arguments;
         if(a === void 0 || a.length < 1) { return; }
-        var r = a[0];
+        var r = init(a[0], $_.divide);
+        if($_.isArray(a[0])) {
+            r = a[0][0];
+            for(var i = 1; i < a[0].length; i++) {
+                if($_.isArray(a[0][i])) {
+                    r = $_.divide(r, a[0][i]);
+                }
+            }
+        }
         for(var i = 1; i < a.length; i++) {
             if($_.isArray(a[i])) {
                 for(var j = 0; j < a[i].length; j++) {
@@ -98,7 +127,7 @@
                 }
             } else {
                 if(a[i] !== 0) {
-                    r *= a[i];
+                    r /= a[i];
                 }
             }
         }

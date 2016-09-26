@@ -27,8 +27,32 @@ if(!window && require) {
 
 (function numberAdd() {
     var r = $_.add(0,0,0,0,1);
-    $_.assert('number.add(1)', 1, r);
+    $_.assert('number.add(arg)', 1, r);
 
     var r = $_.add([1,[1,1]],1,1);
-    $_.assert('number.add(5)', 5, r);
+    $_.assert('number.add(array)', 5, r);
+})();
+
+(function numberSubtract() {
+    var r = $_.subtract(0,0,0,0,1);
+    $_.assert('number.subtract(arg)', -1, r);
+
+    var r = $_.subtract([1,[1,1]],1,1);
+    $_.assert('number.subtract(array)', -3, r);
+})();
+
+(function numberMultiply() {
+    var r = $_.multiply(0,0,0,0,1);
+    $_.assert('number.multiply(arg)', 0, r);
+
+    var r = $_.multiply([1,[2,2]],1,3);
+    $_.assert('number.multiply(array)', 12, r);
+})();
+
+(function numberDivide() {
+    var r = $_.divide(12, 2, 3, 2);
+    $_.assert('number.divide(arg)', 1, r);
+
+    var r = $_.divide([12,[1,2]],1,3);
+    $_.assert('number.divide(array)', 2, r);
 })();
