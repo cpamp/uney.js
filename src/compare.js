@@ -6,8 +6,7 @@
      * @return {boolean} - Whether the values are equal or not.
      */
     $_.equals = function(value, compare, keys) {
-        var self = this;
-        var result = true;
+        var self = this, result = true;
         if(keys == null) { return value === compare; }
         if(!this.isArray(keys)) { keys = [keys]; }
         this.for(keys, function(key) {

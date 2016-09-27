@@ -145,8 +145,7 @@
     ];
 
     $_.dateToString = function(date, format) {
-        var result = format;
-        var values = [];
+        var result = format, values = [];
         for(var i = 0; i < formats.length; i++) {
             result = result.replace(new RegExp(formats[i], 'g'), '${' + values.length + '}');
             values.push($dateFormatter[formats[i]](date));
