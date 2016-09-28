@@ -1,6 +1,25 @@
-var $_ = $_ || {};
-(function($_) {
+(function() {
     'use strict';
+
+    var $chain = function() {
+        this.val = [void 0];
+    }
+
+    $chain.prototype.value = function() {
+        return this.val;
+    };
+
+    var $_ = function() {
+        if(arguments) {
+            var chain = new $chain();
+            chain.val = arguments[0];
+            return chain;
+        }
+    };
+
+    $_.argsToArray = function(args) {
+        return Array.prototype.slice.call(args);
+    };
 
     /**
      * Check if value is not undefined.
@@ -79,11 +98,17 @@ var $_ = $_ || {};
      * @param {number?} increment - Increment value. Default: 1
      */
     $_.for = function(arr, callback, start, increment) {
-        if(start === null || isNaN(start)) { start = 0; }
-        if(increment === null || isNaN(increment)) { increment = 1; }
+        if(start == null || isNaN(start)) { start = 0; }
+        if(increment == null || isNaN(increment)) { increment = 1; }
         for(var i = 0; i < arr.length; i += increment) {
-            if(callback(arr[i], i) === null) break;
+            var val = callback(arr[i], i);
+            if(val !== void 0) return val;
         }
+    };
+
+    $chain.prototype.for = function(callback, start, increment) {
+        this.val = $_.for(this.val, callback, start, increment);
+        return this;
     };
 
 /**INJECT**/
@@ -91,4 +116,4 @@ var $_ = $_ || {};
     var window = window || void 0;
     if(!window && module && module.exports) { module.exports = $_; }
     else if(window) { window.$_ = $_; }
-})($_);
+})();
