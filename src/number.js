@@ -11,6 +11,11 @@
             num <= lower ? lower : num
         );
     };
+    
+    $chain.prototype.restrict = function(lower, upper) {
+        this.val = $_.restrict(this.val, lower, upper);
+        return this;
+    };
 
     /**
      * Checks if a number is in range
@@ -21,6 +26,11 @@
      */
     $_.inRange = function(num, lower, upper) {
         return num >= lower && num <= upper;
+    };
+
+    $chain.prototype.inRange = function(lower, upper) {
+        this.val = $_.inRange(this.val, lower, upper);
+        return this;
     };
 
     function modify(r, val, func) {
@@ -46,6 +56,11 @@
             }
         }
         return r;
+    };
+
+    $chain.prototype.add = function() {
+        this.val = $_.add(this.val, $_.argsToArray(arguments));
+        return this;
     };
 
     function init(val, func) {
@@ -79,6 +94,11 @@
         return r;
     };
 
+    $chain.prototype.subtract = function() {
+        this.val = $_.subtract(this.val, $_.argsToArray(arguments));
+        return this;
+    }
+
     /**
      * Multiply numbers
      * @param {number} args - Args to multiply
@@ -95,6 +115,11 @@
             }
         }
         return r;
+    };
+
+    $chain.prototype.multiply = function() {
+        this.val = $_.multiply(this.val, $_.argsToArray(arguments));
+        return this;
     };
 
     /**
@@ -115,4 +140,9 @@
             }
         }
         return r;
+    };
+
+    $chain.prototype.divide = function() {
+        this.val = $_.divide(this.val, $_.argsToArray(arguments));
+        return this;
     };
