@@ -56,3 +56,18 @@ if(!window && require) {
     var r = $_.contains(ar, 1, 5, 0);
     $_.assert('array.contains(false)', false, r);
 })();
+
+(function arrayFilter() {
+    var ar = [1, 2, 3, [1, 1]];
+    var objAr = [{ a: 1 }, { a: 2 }, { a: 1 }];
+
+    var r = $_.filter(ar, 1, 1, function(val) {
+        return val === 1;
+    });
+    $_.assert('array.filter(primitiveArray)', 3, r.length);
+
+    var r = $_.filter(objAr, [{ a: 1 }, { a: 1 }], function(obj) {
+        return obj.a === 1;
+    });
+    $_.assert('array.filter(objectArray);', 2, r.length);
+})();

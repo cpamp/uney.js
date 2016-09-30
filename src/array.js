@@ -105,3 +105,27 @@
         }
         return true;
     }
+
+    $_.filter = function() {
+        var a = arguments;
+        if(a === void 0) { return; }
+        if(a.length < 2 || typeof a[a.length - 1] !== 'function') { return a[0]; }
+        var filter = a[a.length - 1];
+        var result = [];
+        for(var i = 0; i < a.length - 1; i++) {
+            if($_.isArray(a[i])) {
+                var tempResult = [];
+                for(var j = 0; j < a[i].length; j++) {
+                    var val = $_.filter(a[i][j], filter);
+                    if(val.length === 1) { tempResult.push(val[0]); }
+                    else if(val.length !== 0) { tempResult.push; }
+                }
+                result.push(tempResult);
+            } else {
+                if(filter(a[i])) {
+                    result.push(a[i]);
+                }
+            }
+        }
+        return result;
+    };
