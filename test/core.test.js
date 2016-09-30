@@ -77,4 +77,17 @@ if(!window && require) {
     });
 
     $_.assert('core.for()', arr[1], newArr[1]);
+
+    var newArr = [];
+    $_(arr).for(function(item) {
+        newArr.push(item);
+    });
+    $_.assert('core.chain.for', arr[1], newArr[1]);
+
+    var r = $_.for(arr, function(item, i) {
+        if(i === arr.length - 1) {
+            return item;
+        }
+    });
+    $_.assert('core.for(returns)', 'here', r);
 })();

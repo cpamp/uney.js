@@ -56,3 +56,17 @@ if(!window && require) {
     var r = $_.divide([12,[1,2]],1,3);
     $_.assert('number.divide(array)', 2, r);
 })();
+
+(function numberChain() {
+    var r = $_(100).divide([2, 2], 5).add([1], 1).subtract(1).multiply(3).restrict(0, 20).value();
+    $_.assert('number.chain.restrict', 18, r);
+
+    var r = $_(100).divide([2, 2], 5).add([1], 1).subtract(1).multiply(3).restrict(0, 15).value();
+    $_.assert('number.chain.restrict', 15, r);
+
+    var r = $_(100).divide([2, 2], 5).add([1], 1).subtract(1).multiply(3).inRange(0, 20).value();
+    $_.assert('number.chain.inRange', true, r);
+
+    var r = $_(100).divide([2, 2], 5).add([1], 1).subtract(1).multiply(3).inRange(0, 15).value();
+    $_.assert('number.chain.inRange', false, r);
+})();
