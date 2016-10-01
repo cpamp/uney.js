@@ -1,51 +1,38 @@
-    $_.findMax = function() {
-        var a = arguments;
+    function minMax(args, method, comparitor) {
+        var a = args;
         if(a === void 0) { return; }
-        var max = -Infinity;
+        var r = comparitor(0, Infinity) ? Infinity : -Infinity;
         for(var i = 0; i < a.length; i++) {
             if($_.isArray(a[i])) {
                 for(var j = 0; j < a[i].length; j++) {
                     if($_.isArray(a[i][j])) {
-                        var val = $_.findMax(a[i][j]);
-                        if(val > max) {
-                            max = val;
+                        var val = method(a[i][j]);
+                        if(comparitor(val, r)) {
+                            r = val;
                         }
                     } else {
-                        if(a[i][j] > max) {
-                            max = a[i][j];
+                        if(comparitor(a[i][j], r)) {
+                            r = a[i][j];
                         }
                     }
                 }
-            } else if(a[i] > max) {
-                max = a[i];
+            } else if(comparitor(a[i], r)) {
+                r = a[i];
             }
         }
-        return max;
+        return r;
+    }
+    
+    $_.findMax = function() {
+        return minMax(arguments, $_.findMax, function(a, b) {
+            return a > b;
+        });
     };
 
     $_.findMin = function() {
-        var a = arguments;
-        if(a === void 0) { return; }
-        var min = Infinity;
-        for(var i = 0; i < a.length; i++) {
-            if($_.isArray(a[i])) {
-                for(var j = 0; j < a[i].length; j++) {
-                    if($_.isArray(a[i][j])) {
-                        var val = $_.findMin(a[i][j]);
-                        if(val < min) {
-                            min = val;
-                        }
-                    } else {
-                        if(a[i][j] < min) {
-                            min = a[i][j];
-                        }
-                    }
-                }
-            } else if(a[i] < min) {
-                min = a[i];
-            }
-        }
-        return min;
+        return minMax(arguments, $_.findMin, function(a, b) {
+            return a < b;
+        });
     };
 
     $_.flatten = function() {
