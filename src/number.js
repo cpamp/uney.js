@@ -33,36 +33,6 @@
         return this;
     };
 
-    function modify(r, val, func) {
-        for(var i = 0; i < val.length; i++) {
-            r = func(r, val[i]);
-        }
-        return r;
-    }
-
-    /**
-     * Add numbers together
-     * @param {number} args - Args to add together
-     */
-    $_.add = function() {
-        var a = arguments;
-        if(a === void 0) { return; }
-        var r = 0;
-        for(var i = 0; i < a.length; i++) {
-            if($_.isArray(a[i])) {
-                r = modify(r, a[i], $_.add);
-            } else {
-                r += a[i];
-            }
-        }
-        return r;
-    };
-
-    $chain.prototype.add = function() {
-        this.val = $_.add(this.val, $_.argsToArray(arguments));
-        return this;
-    };
-
     function init(val, func) {
         var r = val;
         if($_.isArray(val)) {
@@ -76,22 +46,50 @@
         return r;
     }
 
+    function modify(r, val, func) {
+        for(var i = 0; i < val.length; i++) {
+            r = func(r, val[i]);
+        }
+        return r;
+    }
+
+    function perform(args, method, mathFunc) {
+        var a = args;
+        if(a === void 0 || a.length < 1) { return; }
+        var r = init(a[0], method);
+        for(var i = 1; i < a.length; i++) {
+            if($_.isArray(a[i])) {
+                r = modify(r, a[i], method);
+            } else {
+                r = mathFunc(r, a[i]);
+            }
+        }
+        return r;
+    }
+
+    /**
+     * Add numbers together
+     * @param {number} args - Args to add together
+     */
+    $_.add = function() {
+        return perform(arguments, $_.add, function(a, b) {
+            return a + b;
+        });
+    };
+
+    $chain.prototype.add = function() {
+        this.val = $_.add(this.val, $_.argsToArray(arguments));
+        return this;
+    };
+
     /**
      * Subtract numbers
      * @param {number} args - Args to subtract
      */
     $_.subtract = function() {
-        var a = arguments;
-        if(a === void 0 || a.length < 1) { return; }
-        var r = init(a[0], $_.subtract);
-        for(var i = 1; i < a.length; i++) {
-            if($_.isArray(a[i])) {
-                r = modify(r, a[i], $_.subtract);
-            } else {
-                r -= a[i];
-            }
-        }
-        return r;
+        return perform(arguments, $_.subtract, function(a, b) {
+            return a - b;
+        });
     };
 
     $chain.prototype.subtract = function() {
@@ -104,17 +102,9 @@
      * @param {number} args - Args to multiply
      */
     $_.multiply = function() {
-        var a = arguments;
-        if(a === void 0 || a.length < 1) { return; }
-        var r = init(a[0], $_.multiply);
-        for(var i = 1; i < a.length; i++) {
-            if($_.isArray(a[i])) {
-                r = modify(r, a[i], $_.multiply);
-            } else {
-                r *= a[i];
-            }
-        }
-        return r;
+        return perform(arguments, $_.multiply, function(a, b) {
+            return a * b;
+        });
     };
 
     $chain.prototype.multiply = function() {
@@ -127,19 +117,13 @@
      * @param {number} args - Args to divide
      */
     $_.divide = function() {
-        var a = arguments;
-        if(a === void 0 || a.length < 1) { return; }
-        var r = init(a[0], $_.divide);
-        for(var i = 1; i < a.length; i++) {
-            if($_.isArray(a[i])) {
-                r = modify(r, a[i], $_.divide);
+        return perform(arguments, $_.divide, function(a, b) {
+            if(b !== 0) {
+                return a / b;
             } else {
-                if(a[i] !== 0) {
-                    r /= a[i];
-                }
+                return a;
             }
-        }
-        return r;
+        });
     };
 
     $chain.prototype.divide = function() {
