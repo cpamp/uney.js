@@ -72,6 +72,11 @@
         return typeof value === 'string' || value instanceof String;
     };
 
+    /**
+     * Try to parse a json string to an object
+     * @param {string} value - Json string to parse
+     * @returns {boolean|object} - False if failed, parsed object if passed.
+     */
     $_.jsonTryParse = function(value) {
         if(this.isString(value)) {
             try {
@@ -83,7 +88,7 @@
         } else {
             return false;
         }
-    }
+    };
 
     /**
      * Optional param assignment.
