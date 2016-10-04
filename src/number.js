@@ -78,7 +78,7 @@
     };
 
     $chain.prototype.add = function() {
-        this.val = $_.add(this.val, $_.argsToArray(arguments));
+        this.val = $_.add(this.val, $_.objToArray(arguments));
         return this;
     };
 
@@ -93,7 +93,7 @@
     };
 
     $chain.prototype.subtract = function() {
-        this.val = $_.subtract(this.val, $_.argsToArray(arguments));
+        this.val = $_.subtract(this.val, $_.objToArray(arguments));
         return this;
     }
 
@@ -108,7 +108,7 @@
     };
 
     $chain.prototype.multiply = function() {
-        this.val = $_.multiply(this.val, $_.argsToArray(arguments));
+        this.val = $_.multiply(this.val, $_.objToArray(arguments));
         return this;
     };
 
@@ -127,6 +127,6 @@
     };
 
     $chain.prototype.divide = function() {
-        this.val = $_.divide(this.val, $_.argsToArray(arguments));
+        this.val = $_.divide(this.val, $_.objToArray(arguments));
         return this;
     };

@@ -19,7 +19,11 @@
 
     $_.noop = function(){};
 
-    $_.argsToArray = function(args) {
+    /**
+     * Turn an array like object to an array.
+     * @param {object} args - Array like object to convert to an array.
+     */
+    $_.objToArray = function(args) {
         return Array.prototype.slice.call(args);
     };
 
