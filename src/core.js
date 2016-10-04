@@ -80,8 +80,7 @@
     $_.jsonTryParse = function(value) {
         if(this.isString(value)) {
             try {
-                var r = JSON.parse(value);
-                return r;
+                return JSON.parse(value);
             } catch(e) {
                 return false;
             }
