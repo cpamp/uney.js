@@ -19,7 +19,7 @@ if(!window && require) {
     var d = {
         a: 'b',
         b: 'a'
-    }
+    };
 
     var r = $_.equals(a, b);
     $_.assert('compare.equals(ref) -> false', false, r);
