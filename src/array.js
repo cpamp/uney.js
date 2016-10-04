@@ -23,18 +23,33 @@
         return r;
     }
     
+    /**
+     * Find the max value in an array.
+     * @param {int} arguments - Argument of integers or array of integers to find the max from.
+     * @returns {int} - Max value
+     */
     $_.findMax = function() {
         return minMax(arguments, $_.findMax, function(a, b) {
             return a > b;
         });
     };
 
+    /**
+     * Find the min value in an array.
+     * @param {int} arguments - Argument of integers or array of integers to find the min from.
+     * @returns {int} - Min value
+     */
     $_.findMin = function() {
         return minMax(arguments, $_.findMin, function(a, b) {
             return a < b;
         });
     };
 
+    /**
+     * Flatten an array into a single level array
+     * @param {any} arguments - Argument of any or array of any to flatten.
+     * @returns {array} - Flattened arguments.
+     */
     $_.flatten = function() {
         var a = arguments;
         if(a === void 0) { return; }
@@ -60,6 +75,12 @@
         return arr;
     };
 
+    /**
+     * Check if an array contains a value
+     * @param {any} firstArgument - Any or array of any to check for contains values
+     * @param {any} arguments - Any or array of any to check if contains
+     * @returns {boolean} - If firstArgument contains all arguments.
+     */
     $_.contains = function() {
         var a = arguments;
         if(a === void 0) { return; }
@@ -93,6 +114,12 @@
         return true;
     }
 
+    /**
+     * Filter values
+     * @param {any} arguments - Arguments to filter
+     * @param {function} lastArgument - Filter function. Accepts one parameter which is the value up for filter.
+     * @returns {array} - Returns array of filtered arguments. Arguments that failed the filter are omitted. Ex: [ arg1, arg2, [arg3]]
+     */
     $_.filter = function() {
         var a = arguments;
         if(a === void 0) { return; }
