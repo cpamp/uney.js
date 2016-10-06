@@ -130,3 +130,9 @@
         this.val = $_.divide(this.val, $_.objToArray(arguments));
         return this;
     };
+
+    $_.random = function(min, max) {
+        min = $_.optional(min, 0);
+        max = $_.optional(max, 1);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
