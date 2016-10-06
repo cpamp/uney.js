@@ -22,8 +22,6 @@
         }
     };
 
-    $_.noop = function(){};
-
     /**
      * Turn an array like object to an array.
      * @param {object} args - Array like object to convert to an array.
