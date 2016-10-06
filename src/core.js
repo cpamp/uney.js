@@ -9,6 +9,11 @@
         return this.val;
     };
 
+    $chain.prototype.chain = function(func) {
+        this.val = func(this.val);
+        return this;
+    }
+
     var $_ = function() {
         if(arguments) {
             var chain = new $chain();
