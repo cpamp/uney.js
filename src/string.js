@@ -7,3 +7,12 @@
         }
         return str;
     };
+
+    $_.replace = function(str, search, replace) {
+        return str.replace(search, replace);
+    };
+
+    $chain.prototype.replace = function(search, replace) {
+        this.val = $_.replace(this.val, search, replace);
+        return this;
+    };
