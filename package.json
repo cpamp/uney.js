@@ -1,7 +1,7 @@
 {
-  "name": "uney-js",
+  "name": "uney",
   "version": "0.0.1",
-  "description": "Javascript tools",
+  "description": "A lightweight javascript library to simplify common tasks.",
   "main": "uney.js",
   "scripts": {
     "build": "gulp build",
